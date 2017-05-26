@@ -1,23 +1,26 @@
-
 public class Jogo {
-///Atributos
 	public static final Machado MACHADO = new Machado();
-	public static final Pocao POCAO = new Pocao();
-	public static final Chave CHAVE = new Chave();
-	private enum comando { moveTo, view, pickUp, drop, trowAxe, exit, quit}
-	private enum portas { A, B, C}
+	public static final Pocao 	POCAO 	= new Pocao();
+	public static final Chave 	CHAVE 	= new Chave();
+	private enum comando{
+		moveTo, view, pickUp, drop, trowAxe, exit, quit
+	}
+	private enum portas{
+		A, B, C
+	}
 	
-///Metodos
 	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		Mapa mapa = new Mapa();
 		Comandos comandos = new Comandos();		
 		String acao[] = {"view",""};
+		
 		while(mapa.player.getNaSala() != 20 && !acao[0].equals("quit")){
-			//System.out.println(mapa.player.getNaSala());
 			acao = comandos.leituraDoTeclado();
-
-            if(acao[0].equals(comando.moveTo.name())){ ///Mover para proximo do item
+			/*
+			 * Mover para proxima sala
+			 */
+            if(acao[0].equals(comando.moveTo.name())){
 				if(acao[1].toUpperCase().equals(portas.A.name())){
 					comandos.moveTo(mapa.player, mapa.salas[mapa.player.getNaSala()].portas[portas.A.ordinal()]);
 				}else 
@@ -32,26 +35,33 @@ public class Jogo {
 					}
 					comandos.moveTo(mapa.player, mapa.salas[mapa.player.getNaSala()].getItem(acao[1]));
 				}
+				/*
+				 * Visualizar a sala
+				 * Pegar o item
+				 * Tacar o machado
+				 * Sair da sala
+				 * Sair do jogo
+				 */
 			}else 
-                if(acao[0].equals(comando.view.name())){ ///Visualizar sala
+                if(acao[0].equals(comando.view.name())){
 				comandos.view(mapa.player, mapa.salas[mapa.player.getNaSala()]);
 			}else 
-				if(acao[0].equals(comando.pickUp.name())){ ///Pegar item	
+				if(acao[0].equals(comando.pickUp.name())){	
 				comandos.pickUp(mapa.player, mapa.player.getProximoAOque(), mapa.salas[mapa.player.getNaSala()]);
 			}else 
-				if(acao[0].equals(comando.drop.name())){ ///Retirar item
+				if(acao[0].equals(comando.drop.name())){
 				comandos.drop(mapa.player, acao[1]);
 			}else 
-				if(acao[0].equals(comando.trowAxe.name())){ ///Lançar o machado
-				System.out.println("Lançou");
+				if(acao[0].equals(comando.trowAxe.name())){
+				System.out.println("Tacou");
 			}else 
-				if(acao[0].equals(comando.exit.name())){ ///Lançar o machado
+				if(acao[0].equals(comando.exit.name())){
 				comandos.exit(mapa.player);
 			}else 
-				if(acao[0].equals(comando.quit.name())){ ///Sair do jogo
-				System.out.println("Saiu do programa");
-			}else{ ///Quando não houver o comando
-				System.out.println("Não há esse comando");
+				if(acao[0].equals(comando.quit.name())){
+				System.out.println("Voc� desistiu do jogo.");
+			}else{
+				System.out.println("Ops... Esse comando n�o existe.");
 			}
 		}
 	}
