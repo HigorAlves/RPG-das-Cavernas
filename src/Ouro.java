@@ -1,1 +1,4 @@
-public class Ouro extends Item{}
+
+public class Ouro extends Item{
+
+}

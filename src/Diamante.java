@@ -1,1 +1,4 @@
-public class Diamante extends Item{}
+
+public class Diamante extends Item{
+
+}
