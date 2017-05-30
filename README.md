@@ -1,4 +1,4 @@
-# RPG das Cavernas
+# RPG das Cavernas :fire:
 
 O objetivo é coletar o maior número de gold e diamante durante o percurso até a saída. Ao ser atingido por um troll, você perde uma poção,
 se não houver nenhuma poção vc perde todo o gold e diamante que irá cair na sala em que vc está. Não se pode pegar ouro ou diamante
